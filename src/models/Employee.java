@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @NamedQueries({
         @NamedQuery(name = "getAllEmployees", query = "SELECT e FROM Employee AS e ORDER BY e.id DESC"),
         @NamedQuery(name = "getEmployeeCount", query = "SELECT COUNT(e) FROM Employee AS e"),
+        @NamedQuery(name="checkRegisteredCode", query="SELECT COUNT(e) FROM Employee AS e WHERE e.code = :code"),
         @NamedQuery(name = "checkLoginCodeAndPassWord", query = "SELECT e FROM Employee AS e WHERE e.delete_flag = 0 AND e.code = :code AND e.password = :pass")
 })
 @Entity
