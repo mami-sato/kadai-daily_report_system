@@ -13,9 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
-@Table(name = "reports")
 @NamedQueries({
     @NamedQuery(
         name = "getAllReports",
@@ -25,6 +23,14 @@ import javax.persistence.Table;
         name = "getReportsCount",
         query = "SELECT COUNT(r) FROM Report AS r"
     ),
+    @NamedQuery(
+         name = "getMyAllReports",
+         query= "SELECT r FROM Report AS r WHERE r.employee = :employee ORDER BY r.id DESC"
+         ),
+    @NamedQuery(
+         name = "getMyReportsCount",
+         query = "SELECt COUNT(r) FROM Report AS r WHERE r.employee = :employee"
+         )
 })
 @Entity
 public class Report {
@@ -109,4 +115,3 @@ public class Report {
         this.updated_at = updated_at;
     }
 }
-
